@@ -26,14 +26,14 @@ export class SearchParams<Filter = string> {
   protected _perPage = 15;
   protected _sort: string | null;
   protected _sortDirection: SortDirection | null;
-  protected _filter: Filter;
+  protected _filter: Filter | null;
 
-  constructor(props: SearchProps<Filter>) {
-    this._page = props.page;
-    this._perPage = props.perPage;
-    this._sort = props.sort;
-    this._sortDirection = props.sortDirection;
-    this._filter = props.filter;
+  constructor(props: SearchProps<Filter> = {}) {
+    this.page = props.page;
+    this.perPage = props.perPage;
+    this.sort = props.sort;
+    this.sortDirection = props.sortDirection;
+    this.filter = props.filter;
   }
 
   get page() {
@@ -45,7 +45,7 @@ export class SearchParams<Filter = string> {
   }
 
   get sort() {
-    return this.sort;
+    return this._sort;
   }
 
   get sortDirection() {
@@ -65,7 +65,7 @@ export class SearchParams<Filter = string> {
   }
 
   private set perPage(value: number) {
-    let _perPage = +value;
+    let _perPage = value === (true as any) ? this._perPage : +value;
     if (
       Number.isNaN(_perPage) ||
       _perPage <= 0 ||
@@ -126,9 +126,9 @@ export class SearchResult<E extends Entity, Filter = string> {
       currentPage: this.currentPage,
       perPage: this.perPage,
       lastPage: this.lastPage,
-      sort: this.sort ?? null,
-      sortDir: this.sortDir ?? null,
-      filter: this.filter ?? null,
+      sort: this.sort,
+      sortDir: this.sortDir,
+      filter: this.filter,
     };
   }
 }
