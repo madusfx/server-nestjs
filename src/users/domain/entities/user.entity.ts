@@ -42,7 +42,7 @@ export class UserEntity extends Entity<UserProps> {
   }
 
   get password() {
-    return this.props.name;
+    return this.props.password;
   }
 
   private set password(value: string) {
