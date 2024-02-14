@@ -2,6 +2,7 @@
 /dist
 /build
 /node_modules
+/.vscode
 
 # Logs
 logs
@@ -42,5 +43,5 @@ lerna-debug.log*
 
 .env
 .env.development
-.env.test 
+.env.test
 tsconfig.tsbuildinfo
