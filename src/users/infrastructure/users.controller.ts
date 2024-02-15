@@ -54,8 +54,8 @@ export class UsersController {
 
   @HttpCode(200)
   @Post('login')
-  async login(@Body() SigninDto: SignupDto) {
-    return this.signinUseCase.execute(SigninDto);
+  async login(@Body() signinDto: SigninDto) {
+    return this.signinUseCase.execute(signinDto);
   }
 
   @Get()
