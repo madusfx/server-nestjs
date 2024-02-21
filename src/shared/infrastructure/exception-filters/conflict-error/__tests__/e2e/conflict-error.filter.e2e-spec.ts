@@ -25,15 +25,11 @@ describe('ConflictErrorFilter (e2e)', () => {
     await app.init();
   });
 
-  afterAll(async () => {
-    await module.close();
-  });
-
   it('should be defined', () => {
     expect(new ConflictErrorFilter()).toBeDefined();
   });
 
-  it('should catch a ConflicError', () => {
+  it('should catch a ConflictError', () => {
     return request(app.getHttpServer()).get('/stub').expect(409).expect({
       statusCode: 409,
       error: 'Conflic',
